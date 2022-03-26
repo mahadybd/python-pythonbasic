@@ -13,7 +13,7 @@ class Book():
     def __str__(self):
         return f"{self.title}, {self.pages} pages long"
 
-    #Check duplicate data---------
+    #Check duplicate data------
     def __eq__(self, other):
         if(self.title == other.title and self.pages == other.pages):
             return True
