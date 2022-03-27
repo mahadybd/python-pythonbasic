@@ -1,4 +1,4 @@
-class Book():
+class Book(): 
     favs = [] #class
 
     def __init__(self, title, pages):

@@ -49,7 +49,6 @@ update_book(book,)
 
 #SDK-----------
 
-
 # select table column and data------------
 c.execute('SELECT rowid, title FROM books')
 data = c.fetchall()
