@@ -1,21 +1,35 @@
-import re
 import sqlite3
 from book import Book
+#####------- default course with real path in OS ----------
+# import os.path
 
+# l = os.path.realpath(
+#     os.path.join(os.getcwd(), os.path.dirname(__file__)))
+# conn = sqlite3.connect(os.path.join(l, 'books.db'))
+# c = conn.cursor()
+
+# def cursor():    
+#     l = os.path.realpath(
+#     os.path.join(os.getcwd(), os.path.dirname(__file__)))
+#     return sqlite3.connect(os.path.join(l, 'books.db')).cursor()
+
+#####-------End default course----------
 def cursor():
     return sqlite3.connect('books.db').cursor()
 
 c = cursor()
-c.execute('CREATE TABLE IF NOT EXISTS books (title TEXT, pages INTEGER)')
+# Create table-----------
+c.execute('''CREATE TABLE IF NOT EXISTS books
+             (title TEXT, pages INTEGER)''')
 c.connection.close()
 
-# def add_book(book):
-#     c = cursor()
+def add_book(book):
+    c = cursor()
 
-#     with c.connection:
-#         c.execute('INSERT INTO books VALUES (?, ?)', (book.title, book.pages))
-#     c.connection.close() 
-#     return c.lastrowid
+    with c.connection:
+        c.execute('INSERT INTO books VALUES (?, ?)', (book.title, book.pages))
+    c.connection.close() 
+    return c.lastrowid
 
 # return all books-----------
 # def get_books():
@@ -57,3 +71,12 @@ def update_book(book, new_title, new_pages):
     book = get_book_by_title(book.title) #after commit
     c.connection.close()
     return book    
+
+
+def delete_book(book):
+    c = cursor()
+    with c.connection:
+        c.execute('DELETE FROM books WHERE title=? AND pages=?', (book.title, book.pages))
+    rows = c.rowcount
+    c.connection.close()
+    return rows

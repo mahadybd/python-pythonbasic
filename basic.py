@@ -15,35 +15,84 @@
 # ------List --------------
 # numbers = [1, 2, 3, 4, 5]
 # numbers2 = list((1, 2, 3, 4, 5)) # same results as numbers
-# fruits = ['apple', 'Oranged', 'Grapes']
+# fruits = ["apple", "Oranged", "Grapes"]
 # print(fruits[1]) # Oranged
 # print(fruits[-1]) # Grapes
 # print(fruits[0:2])
-# fruits.remove('apple')
+# fruits.remove("apple")
 # print(fruits)
-# # fruits.append('Mango')
-# fruits.remove('Grapes')
-# fruits.insert(2, 'Strawberries')
+# # fruits.append("Mango")
+# fruits.insert(2, "Strawberries")
 # fruits.pop(2)
 # fruits.sort()
 # fruits.sort(reverse=True)
-# fruits[0] = 'Blueberries'
+# fruits[0] = "Blueberries"
 # print(fruits)
+#-----------------------
+# healthy = ["kale chips", "broccoli"]
+# backpack = ["pizza","frozen custard", "apple crisp", "kale chips"]
+
+# print(backpack)
+# [:] slice --> keeps same object id . in memory, old backpack will replace.
+# backpack[:] = [item for item in backpack if item in healthy]
+
+# print(backpack)
+
+# same result with for loop.............
+# healthy_backpack = []
+
+# for item in backpack:
+#     if item in healthy:
+#         healthy_backpack.append(item)
+
+# print(healthy_backpack)
+#------------------------
+# squares = []
+
+# for i in range(10):
+#     squares.append(i ** 2)
+
+# print(squares)
+
+# same result-----------
+# squares2 = [i ** 2 for i in range(10)]
+# print(squares2)
+
+# squares3 = [i ** 2 for i in range(10) if i % 2 == 0]
+# print(squares3)
+#--------------------------
+# greetings = ["hi", "hello", "hallo","wassap","yo"]
+
+# for i in range(len(greetings)):
+#     print(i, greetings[i])
+#--------------------------
+# backpack = ["pizza","frozen custard", "apple crisp", "kale chips","pizza", "pizza"]
+
+# count = [[backpack.count(item), item] for item in  set(backpack)]
+# print(count)
+#--------------------------
+from collections import Counter
+
+fruits = ["apple", "Oranged", "Grapes","apple", "Oranged", "Grapes", "banana","apple", "Oranged", "Grapes",]
+
+print(Counter(fruits)) # return dictionary . this is the best way to count a list
+# (printed result)-> Counter({'apple': 3, 'Oranged': 3, 'Grapes': 3, 'banana': 1})
 
 # ------Tuple --------------
 # Tuple ordered and unchangeable. allow duplicate value
-# fruits = ('apple', 'Oranged', 'Grapes')
-# fruits2 = ('Apple',)  # single tuple
+# fruits = ("apple", "Oranges", "Grapes")
+# fruits2 = ("Apple",)  # single tuple
 # del fruits2
 
 # numbers = (1,2,3,4,4,5)
 # print(numbers.count(4))
 # print(numbers.index(4))
-# ------Set --------------
-# unordered and unindexed. No duplicate members
-# fruits_set = {'apple', 'Oranged', 'Grapes'}
 
-# print('apple' in fruits_set)  # return true or false
+# ------Set ------------------------
+# unordered and unindexed. No duplicate members
+# fruits_set = {"apple", "Oranged", "Grapes"}
+
+# print("apple" in fruits_set)  # return true or false
 
 # fruits_set.add('Blueberries')
 # fruits_set.remove('apple')
